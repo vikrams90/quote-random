@@ -1,5 +1,6 @@
 const button = document.querySelector(".btn-success")
 const buttonAuto = document.querySelector(".btn-primary")
+const buttonclose = document.querySelector(".btn-danger")
 let check = false
 let count = 0
 let x = 4422222
@@ -51,5 +52,11 @@ const toggleValue= () =>{
     }
 }
 
+
+const closee = ()=>{
+    window.close()
+}
+
 buttonAuto.addEventListener("click",toggleValue)
 button.addEventListener("click",getdata)
+buttonclose.addEventListener("click",closee)
