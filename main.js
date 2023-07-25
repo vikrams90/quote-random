@@ -1,5 +1,9 @@
 const button = document.querySelector(".btn-success")
+const buttonAuto = document.querySelector(".btn-primary")
+let check = false
+let count = 0
 let x = 4422222
+let refreshID = null
 const getdata = async () => {
     console.log("button clicked")
     const data = await fetch("https://dummyjson.com/quotes/random")
@@ -17,13 +21,35 @@ const getdata = async () => {
     y="#"+y
     background.style.backgroundColor=y
     x=x+100000
+   
 };
 
+const toggleValue= () =>{
+    count++
+    console.log(count)
+    if(count%2==0){
+        check=false
+        console.log(check)
+       
+    }
+    else{
+        check=true
+        console.log(check)
+    }
 
+    if(check)
+    {
+        console.log("in if check")
+        refreshID = setInterval(getdata,5000)
+        buttonAuto.innerText="stop Auto"
+    }
+    else if(!check){
+        console.log("in else check")
+        clearInterval(refreshID)
+        refreshID=null
+        buttonAuto.innerText="start Auto"
+    }
+}
 
-
-
-
-
-
+buttonAuto.addEventListener("click",toggleValue)
 button.addEventListener("click",getdata)
