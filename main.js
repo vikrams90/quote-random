@@ -54,6 +54,7 @@ const toggleValue= () =>{
 
 
 const closee = ()=>{
+    window.open(" ","_self")
     window.close()
 }
 
